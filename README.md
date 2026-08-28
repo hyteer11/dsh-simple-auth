@@ -4,6 +4,8 @@
 **单密码登录门**：不登录就碰不到你的 agent、会话与 LLM 凭证；登录一次后，在可配置的
 **免认证有效期**内无需再次认证（手动退出 / 主动锁定除外）。
 
+> 📦 已发布到 npm：`npm i dsh-simple-auth`，并在 dsh profile 中用 `dsh plugin --profile web add dsh-simple-auth` 安装。
+
 ## 功能
 
 | # | 需求 | 实现 |
@@ -31,8 +33,11 @@
 
 ```sh
 # 1. 安装到你的 dsh profile（以 web 为例）。
-#    包声明了 dsh.bundle，`dsh plugin add` 会自动注册挂载行，无需手写 patch：
-dsh plugin --profile web add /path/to/dsh-simple-auth          # 或 link:/path/to/dsh-simple-auth 便于开发迭代
+#    已发布到 npm：包声明了 dsh.bundle，`dsh plugin add` 会自动注册挂载行，无需手写 patch：
+dsh plugin --profile web add dsh-simple-auth
+
+#    本地/开发迭代（改动对插件即时生效，适合改代码）：改用 link: 指向本地目录：
+# dsh plugin --profile web add link:/path/to/dsh-simple-auth
 
 # 2. （可选）初始化密码。不做这步也可以：重启 dsh 后首次打开会看到初始化页面。
 printf '%s\n' '选一个强密码' | dsh-simple-auth init --password-stdin
