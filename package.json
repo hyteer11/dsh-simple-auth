@@ -1,11 +1,22 @@
 {
   "name": "dsh-simple-auth",
   "version": "1.0.0",
-  "description": "Single-password authentication gate for the dsh web surface: configurable session validity, Ctrl+L lock, CLI password management, brute-force lockout, in-UI password controls.",
+  "description": "Single-password authentication gate for the dsh web surface: configurable session validity, Ctrl+Shift+L lock, CLI password management, brute-force lockout, in-UI password controls.",
   "type": "module",
   "license": "MIT",
   "engines": {
     "node": ">=20"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hyteer11/dsh-simple-auth.git"
+  },
+  "homepage": "https://github.com/hyteer11/dsh-simple-auth#readme",
+  "bugs": {
+    "url": "https://github.com/hyteer11/dsh-simple-auth/issues"
+  },
+  "publishConfig": {
+    "access": "public"
   },
   "keywords": [
     "dsh",
@@ -44,6 +55,7 @@
   },
   "files": [
     "lib",
+    "doc",
     "cordis.patch.yml",
     "README.md"
   ],
