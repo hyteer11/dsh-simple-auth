@@ -605,7 +605,11 @@ test("cli: init/passwd/enable/disable/unlock/status lifecycle", async () => {
 test("pages: setup/login/disabled/corrupt render distinct views", async () => {
 	const { setupPageHtml, loginPageHtml, disabledPageHtml, corruptPageHtml } = await import("../lib/pages.js");
 	assert.match(setupPageHtml("/"), /初始化密码/);
-	assert.match(loginPageHtml("/"), /dsh 已锁定/);
+	// Minimal login page: no heading, placeholder text, and an icon button.
+	const login = loginPageHtml("/");
+	assert.match(login, /输入密码解锁/);
+	assert.ok(!login.includes("<h1>"));
+	assert.match(login, /class="icon"/);
 	assert.match(disabledPageHtml(), /认证已禁用/);
 	assert.match(corruptPageHtml(), /认证状态异常/);
 });
