@@ -1,0 +1,12 @@
+# dsh-simple-auth bundle patch: inserts the authentication gate row.
+#
+# Mount into a profile automatically: `dsh plugin --profile <name> add dsh-simple-auth`
+# reconciles `dsh.profile.bundles` for packages that declare `dsh.bundle`, so
+# this row is registered on install (no manual patch editing needed).
+#
+# Per-deployment configuration (sessionTtl, cookieSecure, maxAttempts, ...) is
+# applied as a config override in the user layer ($DSH_HOME/cordis.patch.yml
+# or the profile's cordis.patch.yml, both applied after every bundle layer).
+- insert:
+    - id: dsh-simple-auth
+      name: "dsh-simple-auth"

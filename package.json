@@ -1,0 +1,55 @@
+{
+  "name": "dsh-simple-auth",
+  "version": "1.0.0",
+  "description": "Single-password authentication gate for the dsh web surface: configurable session validity, Ctrl+L lock, CLI password management, brute-force lockout, in-UI password controls.",
+  "type": "module",
+  "license": "MIT",
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "auth",
+    "authentication",
+    "password",
+    "lock",
+    "lockout",
+    "security"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-runtime",
+        "@deepseek-ai/dsh-client-ui-slots"
+      ],
+      "platform": "web"
+    }
+  },
+  "main": "lib/index.js",
+  "bin": {
+    "dsh-simple-auth": "lib/cli.js"
+  },
+  "exports": {
+    ".": {
+      "default": "./lib/index.js"
+    },
+    "./client": {
+      "default": "./lib/client.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "cordis.patch.yml",
+    "README.md"
+  ],
+  "scripts": {
+    "test": "node test/run.js"
+  },
+  "dependencies": {},
+  "peerDependencies": {}
+}
